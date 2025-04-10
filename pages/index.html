@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book - Online Library Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .book-cover {
+            max-height: 150px;
+            object-fit: contain;
+        }
+        .wishlist-btn {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .wishlist-btn.active {
+            color: red;
+        }
+        #loadingSpinner {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .book-cover { max-height: 100px; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">
+            <i class="fas fa-book-open me-2"></i>Book
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="wishList.html">My Wishlist</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                    <span class="navbar-text me-3" id="wishlistCount">
+                        <i class="fas fa-heart text-danger me-1"></i> 0
+                    </span>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search books..." id="searchInput">
+                    <button class="btn btn-light" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container my-4">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h2><i class="fas fa-book me-2"></i>Book Catalog</h2>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <div class="dropdown d-inline-block me-2">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="genreDropdown" data-bs-toggle="dropdown">
+                    Filter by Genre
+                </button>
+                <ul class="dropdown-menu" id="genreFilter" style="height: 200px; overflow-y: auto">
+                    <li><a class="dropdown-item active" href="#" data-genre="all">All Genres</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="booksTable" class="table table-hover" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Cover Image</th>
+                        <th>Genre</th>
+                        <th>Id</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="booksTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+        <button id="prevPage" class="btn btn-primary" disabled>
+            <i class="fas fa-arrow-left me-1"></i> Previous
+        </button>
+        <div id="pageIndicator" class="text-muted">Page 1</div>
+        <button id="nextPage" class="btn btn-primary">
+            Next <i class="fas fa-arrow-right ms-1"></i>
+        </button>
+    </div>
+</div>
+
+<div id="loadingSpinner" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2">Loading books...</p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+<script src="assets/js/main.js"></script>
+<!--<script src="assets/js/wishlist.js"></script>-->
+<!--<script src="assets/js/book.js"></script>-->
+</body>
+</html>
