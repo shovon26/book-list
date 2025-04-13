@@ -2,12 +2,10 @@
 $request = $_SERVER['REQUEST_URI'];
 $path = parse_url($request, PHP_URL_PATH);
 
-// Serve static files directly
 if (preg_match('/\.(css|js|jpg|png|gif|ico|svg)$/i', $path)) {
     return false;
 }
 
-// Handle routes
 switch (true) {
     case $path === '/':
         include __DIR__ . '/pages/index.html';
@@ -23,4 +21,3 @@ switch (true) {
         include __DIR__ . '/pages/404.html';
         break;
 }
-?>
